@@ -23,7 +23,7 @@ def get_top_recommendations_kmeans(customer_id, n=3):
         # Get top products purchased by customers in the same cluster
         top_recommendations = product_customer_matrix.loc[:, cluster_customers].sum(axis=1).sort_values(ascending=False).head(n).index
         # top_recommendations = product_encoder.inverse_transform(top_recommendations)
-    except ValueError:
+    except:
         # Handle the case where customer ID is not in the dataset
         # Provide random recommendations from the entire product list
         all_products = np.arange(len(product_customer_matrix.index))
